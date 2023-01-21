@@ -1,5 +1,5 @@
 export interface CategoriesModel {
-  path: string,
+  id: number,
   categoryName: string,
-  productNumber: number
+  productsNumber: number
 }

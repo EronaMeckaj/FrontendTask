@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { CategoriesModel } from 'src/app/models/categories.model';
 import { FilterPipe } from 'src/app/pipes/filter.pipe';
 import { DataService } from 'src/app/services/data.service';
@@ -13,7 +14,7 @@ export class CategoriesComponent implements OnInit {
   searchbar!: ElementRef;
   searchText = '';
   categories: CategoriesModel[] = [];
-  constructor(private dataService: DataService, public filter: FilterPipe) {
+  constructor(private dataService: DataService, public filter: FilterPipe, private router: Router,) {
   }
 
   ngOnInit() {
@@ -26,9 +27,9 @@ export class CategoriesComponent implements OnInit {
         res.categories.forEach(category => {
           this.categories.push(
             {
+              id: category.id,
               categoryName: category.name,
-              path: '/category/' + this.dataService.modifyString(category.name),
-              productNumber: category.products.length
+              productsNumber: category.products.length
             }
           )
         });
@@ -37,5 +38,9 @@ export class CategoriesComponent implements OnInit {
         console.log(err);
       }
     });
+  }
+
+  goToProducts(id: number) {
+    this.router.navigate(['categories', id]);
   }
 }

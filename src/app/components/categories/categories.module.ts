@@ -8,21 +8,26 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { FilterPipe } from 'src/app/pipes/filter.pipe';
+import { ProductsModule } from './products/products.module';
+import { CategoriesRoutingModule } from './categories-routing.module';
+import { ToolbarComponent } from 'src/shared/components/toolbar/toolbar.component';
 
 @NgModule({
   declarations: [
     CategoriesComponent,
-    FilterPipe
+    FilterPipe,
+    ToolbarComponent
   ],
   imports: [
     CommonModule,
+    CategoriesRoutingModule,
     FormsModule,
-    CommonModule,
     MatButtonModule,
     MatToolbarModule,
     MatIconModule,
     MatListModule,
     HttpClientModule,
+    ProductsModule
   ],
   exports: [CategoriesComponent],
   providers: [FilterPipe]
