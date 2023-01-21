@@ -1,5 +1,19 @@
 <p>
   <mat-toolbar class="category-name">
+    <button mat-icon-button *ngIf="!showIcons" (click)="goBackToCategories() ">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+    <button mat-icon-button (click)=" toggleThemes()" *ngIf="showIcons && darkModeSwitcher">
+      <mat-icon class="material-icons-outlined">dark_mode</mat-icon>
+    </button>
+    <button mat-icon-button (click)="toggleThemes()" *ngIf="showIcons && !darkModeSwitcher">
+      <mat-icon class="material-icons-outlined">light_mode</mat-icon>
+    </button>
+    <span class="spacer"></span>
     <span>Category Name</span>
+    <span class="spacer"></span>
+    <button mat-icon-button *ngIf="!showIcons">
+      <mat-icon matBadge="15" matBadgeColor="warn">shopping_cart</mat-icon>
+    </button>
   </mat-toolbar>
 </p>

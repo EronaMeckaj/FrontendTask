@@ -47,5 +47,9 @@
 .mat-mdc-card-title {
   width: 160px;
   word-break: break-all;
+  color: var(--on-primary);
 }
 
+.products {
+  background: var(--background);
+}

@@ -10,13 +10,12 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { FilterPipe } from 'src/app/pipes/filter.pipe';
 import { ProductsModule } from './products/products.module';
 import { CategoriesRoutingModule } from './categories-routing.module';
-import { ToolbarComponent } from 'src/shared/components/toolbar/toolbar.component';
+import { ToolbarModule } from 'src/shared/components/toolbar/toolbar.module';
 
 @NgModule({
   declarations: [
     CategoriesComponent,
-    FilterPipe,
-    ToolbarComponent
+    FilterPipe
   ],
   imports: [
     CommonModule,
@@ -27,7 +26,8 @@ import { ToolbarComponent } from 'src/shared/components/toolbar/toolbar.componen
     MatIconModule,
     MatListModule,
     HttpClientModule,
-    ProductsModule
+    ProductsModule,
+    ToolbarModule
   ],
   exports: [CategoriesComponent],
   providers: [FilterPipe]

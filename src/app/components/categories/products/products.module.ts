@@ -5,6 +5,7 @@ import { ProductsRoutingModule } from './products-routing.module';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button'
+import { ToolbarModule } from 'src/shared/components/toolbar/toolbar.module';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { MatButtonModule } from '@angular/material/button'
     ProductsRoutingModule,
     MatButtonModule,
     MatCardModule,
-    MatIconModule
+    MatIconModule,
+    ToolbarModule
   ],
   exports: [ProductsComponent]
 })

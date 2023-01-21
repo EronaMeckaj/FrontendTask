@@ -1,7 +1,11 @@
-.mat-toolbar-single-row {
-  justify-content: center;
+.category-name {
+  color: var(--on-background);
+  background: var(--background);
+}
+.spacer {
+  flex: 1 1 auto;
 }
 
-.category-name {
-  background-color: white;
+::ng-deep .mat-badge-content.mat-badge-active {
+  background-color: #b3261e;
 }
