@@ -11,11 +11,15 @@
     </mat-toolbar-row>
   </mat-toolbar>
   <mat-list class="categories-list">
-    <mat-list-item *ngFor="let item of categories">
+    <mat-list-item *ngFor="let item of categories | filter: searchText">
       <div class="d-flex justify-content-between">
         <div mat-line>{{item.categoryName}}</div>
         <div mat-line>{{item.productNumber}}</div>
       </div>
+    </mat-list-item>
+    <mat-list-item *ngIf="(categories | filter: searchText).length === 0">
+      <div mat-line>0 results</div>
+      <div mat-line>No matching categories</div>
     </mat-list-item>
   </mat-list>
 </div>

@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { CategoriesModel } from 'src/app/models/categories.model';
+import { FilterPipe } from 'src/app/pipes/filter.pipe';
 import { DataService } from 'src/app/services/data.service';
 
 @Component({
@@ -12,7 +13,7 @@ export class CategoriesComponent implements OnInit {
   searchbar!: ElementRef;
   searchText = '';
   categories: CategoriesModel[] = [];
-  constructor(private dataService: DataService) {
+  constructor(private dataService: DataService, public filter: FilterPipe) {
   }
 
   ngOnInit() {

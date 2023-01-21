@@ -7,10 +7,12 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { FilterPipe } from 'src/app/pipes/filter.pipe';
 
 @NgModule({
   declarations: [
-    CategoriesComponent
+    CategoriesComponent,
+    FilterPipe
   ],
   imports: [
     CommonModule,
@@ -22,6 +24,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatListModule,
     HttpClientModule,
   ],
-  exports: [CategoriesComponent]
+  exports: [CategoriesComponent],
+  providers: [FilterPipe]
 })
 export class CategoriesModule { }
