@@ -1,1 +1,20 @@
-<p>products works!</p>
+<div layout="row">
+  <div *ngFor="let product of productsList" layout="row">
+    <mat-card class="product-card">
+      <mat-card-header>
+        <div mat-card-avatar class="first-letter-icon" [ngStyle]="{'background-color': product.backgroundColor}">
+          {{checkLetter(product.name)}}</div>
+        <mat-card-title>{{product.name}}</mat-card-title>
+        <mat-card-subtitle>{{product.unitPrice}} Leke</mat-card-subtitle>
+        <div class="d-flex product-actions">
+          <button mat-mini-fab class="first-letter-icon remove-button" aria-label="Remove from cart">
+            <span>-</span>
+          </button>
+          <button mat-mini-fab class="first-letter-icon add-button" aria-label="Add to card">
+            <span>+</span>
+          </button>
+        </div>
+      </mat-card-header>
+    </mat-card>
+  </div>
+</div>
