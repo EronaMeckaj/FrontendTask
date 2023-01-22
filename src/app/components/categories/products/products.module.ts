@@ -11,6 +11,7 @@ import { CartComponent } from './cart/cart.component';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { FormsModule } from '@angular/forms';
+import { ReceiptDialogComponent } from './cart/receipt-dialog/receipt-dialog.component';
 
 
 
@@ -18,6 +19,7 @@ import { FormsModule } from '@angular/forms';
   declarations: [
     ProductsComponent,
     CartComponent,
+    ReceiptDialogComponent,
   ],
   imports: [
     CommonModule,

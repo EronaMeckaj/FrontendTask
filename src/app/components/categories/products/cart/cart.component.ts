@@ -1,7 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Product } from 'src/app/models/data.model';
 import { DataService } from 'src/app/services/data.service';
+import { ReceiptDialogComponent } from './receipt-dialog/receipt-dialog.component';
 
 @Component({
   selector: 'app-cart',
@@ -18,6 +19,7 @@ export class CartComponent implements OnInit {
       chosenProducts: Product[]
     },
     public dataService: DataService,
+    private dialogManager: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -27,4 +29,10 @@ export class CartComponent implements OnInit {
     this.dialogRef.close();
   };
 
+  openReceiptDialogModal = () => {
+    this.closeCart();
+    this.dialogManager.open(ReceiptDialogComponent, {
+      disableClose: true,
+    })
+  };
 }
