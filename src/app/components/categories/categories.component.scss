@@ -1,18 +1,19 @@
 .search-control {
   border: unset;
-  background: #f5f5f5;
+  background: #e7e0ec;
   width: 80%;
 }
 .search-row {
   justify-content: center;
+  background: #e7e0ec;
 }
 .search-toolbar {
   margin-left: 5%;
   width: 90%;
 }
 .categories-list {
-  margin-left: 2%;
-  margin-right: 2%;
+  margin-left: 5%;
+  width: 90%;
 }
 
 .text {
@@ -27,4 +28,23 @@
 
 .add-to-cart {
   margin-right: 5%;
+}
+
+.mat-mdc-list-item.mdc-list-item.mat-mdc-list-item-single-line.mdc-list-item--with-one-line {
+  border-bottom: 1px solid #cac4d0;
+}
+
+.mat-toolbar.main-header.mat-elevation-z4.search-toolbar.mat-toolbar-multiple-rows {
+  border-bottom: 1px solid black;
+  box-shadow: unset;
+}
+
+.search-control::placeholder {
+  color: #49454f;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.4px;
 }

@@ -11,14 +11,14 @@ import { DataService } from 'src/app/services/data.service';
 export class ReceiptDialogComponent {
   constructor(
     public dialogRef: MatDialogRef<ReceiptDialogComponent>,
-    public dataService: DataService,
     private router: Router,
+    public dataService: DataService
   ) { }
 
   closeReceiptDialogModal = () => {
-    this.dialogRef.close();
     this.dataService.chosenProducts = [];
     this.dataService.totalQuantity = 0;
+    this.dialogRef.close();
     this.router.navigate(['categories']);
   };
 }
