@@ -23,6 +23,9 @@ export class CategoriesComponent implements OnInit {
     this.getCategories();
   }
 
+  /*
+ Get all the data from the endpoint in order to build each category object and the categories array.
+ */
   getCategories(): void {
     this.dataService.getAllData().subscribe({
       next: (res) => {
@@ -46,7 +49,7 @@ export class CategoriesComponent implements OnInit {
     this.router.navigate(['categories', id]);
   }
 
-  openCartModal = () => {
+  openCartModal = () => { //open cart popup to see the receipt
     this.dialogManager.open(CartComponent, {
       disableClose: true,
       data: {

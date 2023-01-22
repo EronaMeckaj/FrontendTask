@@ -5,7 +5,7 @@
     <slide *ngFor="let slide of dataService.totalSlides; let index=index">
       <div *ngFor="let product of dataService.newProductList" layout="row">
         <mat-card class="product-card">
-          <mat-card-header>
+          <mat-card-header class="card-header">
             <div *ngIf="product.quantity==0" mat-card-avatar class="first-letter-icon"
               [ngStyle]="{'background-color': product.backgroundColor}">
               {{dataService.checkLetter(product.name)}}</div>
@@ -16,6 +16,8 @@
             </mat-icon>
             <mat-card-title>{{product.name}}</mat-card-title>
             <mat-card-subtitle>{{product.unitPrice}} Leke</mat-card-subtitle>
+            <span class="spacer" *ngIf="product!.showButton"></span>
+            <span class="spacer-1" *ngIf="!product!.showButton"></span>
             <div class="d-flex product-actions">
               <button mat-mini-fab class="first-letter-icon remove-button" aria-label="Remove from cart"
                 (click)="removeFromCart(product)" *ngIf="product!.showButton">
@@ -35,7 +37,6 @@
     <button mat-flat-button color="primary" class="view-cart-button" (click)="openCartModal()">Shiko faturen</button>
   </div>
 </div>
-
 <div layout="row" class="products" *ngIf="!dataService.showView">
   <h1 class="text-center">Kjo kategori nuk ka asnje produkt!</h1>
 </div>

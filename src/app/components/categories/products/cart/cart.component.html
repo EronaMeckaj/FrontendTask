@@ -5,15 +5,15 @@
 <h1 mat-dialog-title *ngIf="data.totalQuantity==0" class="text-center">
   Ju nuk keni asnje produkt ne shporte!
 </h1>
+<div class="totalPrice text-center" *ngIf="data.totalQuantity>0"> {{data.totalPrice}} ALL</div>
 <div mat-dialog-content *ngIf="data.totalQuantity>0">
-  <div class="totalPrice text-center"> {{data.totalPrice}} ALL</div>
   <div layout="row" *ngFor="let product of data.chosenProducts">
     <mat-card class="product-card" *ngIf="product.quantity>0">
       <mat-card-header>
         <div mat-card-avatar class="first-letter-icon" [ngStyle]="{'background-color': product.backgroundColor}">
           {{dataService.checkLetter(product.name)}}</div>
         <mat-card-title>{{product.name}}</mat-card-title>
-        <div>{{product.quantity}} x {{product.unitPrice}} </div>
+        <div class="product-total">{{product.quantity}} x {{product.itemPrice}}</div>
         <mat-checkbox [(ngModel)]="product.showButton">
         </mat-checkbox>
       </mat-card-header>
@@ -26,5 +26,4 @@
     <button mat-button mat-flat-button (click)="openReceiptDialogModal()" class="cart-buttton-actions send-receipt"
       *ngIf="data.totalQuantity>0">Paguaj</button>
   </div>
-
 </mat-dialog-actions>

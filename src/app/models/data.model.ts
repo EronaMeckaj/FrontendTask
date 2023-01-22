@@ -17,4 +17,5 @@ export interface Product {
   backgroundColor?: string;
   quantity: number;
   showButton?: boolean;
+  itemPrice: number;
 }

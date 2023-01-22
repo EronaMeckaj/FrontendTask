@@ -16,15 +16,14 @@ export class DataService {
   totalSlides: any;
   newProductList: Product[] = [];
   constructor(private http: HttpClient) { }
-  /**
+  /*
    * GET request to take all data from the endpoint as an Observable of type Data.
    */
   getAllData(): Observable<Data> {
     return this.http.get<Data>('https://test.dev.al/test/');
   }
 
-  /**
-* Gets the list of products for the chosen category, filtering the data from the endpoint with the id received from the route params.
+  /* Get the list of products for the chosen category, filtering the data from the endpoint with the id received from the route params.
 */
   filterProductsByCategoryId(id: string | null): void {
     this.getAllData().subscribe({
@@ -40,7 +39,8 @@ export class DataService {
             unitPrice: product.unitPrice,
             backgroundColor: this.getRandomColor(), // sets the background color for each icon
             quantity: 0,
-            showButton: false
+            showButton: false,
+            itemPrice: product.unitPrice
           }
         })
         if (this.productsList.length > 0) {
@@ -67,8 +67,8 @@ export class DataService {
     })
   }
 
-  /**
-  * Generates random colors for each product icon.
+  /*
+   Generates random colors for each product icon.
   */
   getRandomColor(): string {
     let letters = '0123456789ABCDEF';
@@ -79,10 +79,10 @@ export class DataService {
     return color;
   }
 
-  /**
-* Checks if the product name starts with a letter or not.
-* If it starts with a letter, it returns the first letter of the product name.
-* If it doesn't start with a letter, it replaces special characters and numbers in the product name and then takes the first letter of the product name.
+  /*
+Checks if the product name starts with a letter or not.
+If it starts with a letter, it returns the first letter of the product name.
+If it doesn't start with a letter, it replaces special characters and numbers in the product name and then takes the first letter of the product name.
 */
   checkLetter(name: string) {
     if (/^[a-z]/i.test(name)) {
@@ -94,6 +94,9 @@ export class DataService {
     }
   }
 
+  /*
+Get the product list for each slide of the carousel. Each card will have 6 slides.
+*/
   activeSlideChange(newIndex: number) {
     if (newIndex >= 0) {
       let begin = ((newIndex + 1 - 1) * 6);

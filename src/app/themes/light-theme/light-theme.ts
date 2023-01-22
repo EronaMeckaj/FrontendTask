@@ -5,11 +5,13 @@ export const lightTheme: Theme = {
   properties: {
     '--background': '#fff',
     '--on-background': '#000',
-    '--primary': '#1976d2',
+    '--primary': '#B3261E',
     '--on-primary': '#000',
     '--active-color': 'red',
-    '--font-family': 'Helvetica',
+    '--font-family': 'Roboto',
     '--on-box-shadow': '1',
-    '--navbar-background': 'white'
+    '--navbar-background': 'white',
+    '--icon-left': 'url("../../../../assets/arrow-left.png")',
+    '--icon-right': 'url("../../../../assets/right-arrow.png")'
   },
 };

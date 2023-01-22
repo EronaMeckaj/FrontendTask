@@ -46,7 +46,8 @@ export class ProductsComponent implements OnInit {
         unitPrice: this.dataService.chosenProducts[index].unitPrice += selectedProduct.unitPrice,
         quantity: this.dataService.chosenProducts[index].quantity += 1,
         backgroundColor: this.dataService.getRandomColor(), // sets the background color for each icon
-        showButton: true
+        showButton: true,
+        itemPrice: selectedProduct.itemPrice
       }
       this.dataService.newProductList[indexNewProductList].quantity = this.dataService.chosenProducts[index].quantity;;
 
@@ -58,7 +59,8 @@ export class ProductsComponent implements OnInit {
         unitPrice: selectedProduct.unitPrice,
         quantity: 1,
         backgroundColor: this.dataService.getRandomColor(), // sets the background color for each icon
-        showButton: true
+        showButton: true,
+        itemPrice: selectedProduct.itemPrice
       })
     }
     this.getTotalPrice(this.dataService.chosenProducts);
@@ -76,7 +78,8 @@ export class ProductsComponent implements OnInit {
           unitPrice: this.dataService.chosenProducts[index].unitPrice -= selectedProduct.unitPrice,
           quantity: this.dataService.chosenProducts[index].quantity -= 1,
           backgroundColor: this.dataService.getRandomColor(), // sets the background color for each icon
-          showButton: true
+          showButton: true,
+          itemPrice: selectedProduct.itemPrice
         }
         this.dataService.newProductList[indexNewProductList].quantity = this.dataService.chosenProducts[index].quantity;
       }
@@ -96,6 +99,7 @@ export class ProductsComponent implements OnInit {
     });
     return this.dataService.totalPrice;
   }
+
   getTotalQuantity(chosenProducts: Product[]): number {
     this.dataService.totalQuantity = 0;
     chosenProducts.forEach(product => {

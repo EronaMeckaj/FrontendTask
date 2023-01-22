@@ -5,11 +5,13 @@ export const darkTheme: Theme = {
   properties: {
     '--background': '#1F2125',
     '--on-background': '#fff',
-    '--primary': 'darkorange',
+    '--primary': '#B3261E',
     '--on-primary': '#000',
     '--active-color': 'red',
-    '--font-family': 'Helvetica',
+    '--font-family': 'Roboto',
     '--on-box-shadow': '0.5',
-    '--navbar-background': '#1F2125'
+    '--navbar-background': '#1F2125',
+    '--icon-left': 'url("../../../../assets/left-arrow-white.png")',
+    '--icon-right': 'url("../../../../assets/right-arrow-white.png")'
   },
 };
