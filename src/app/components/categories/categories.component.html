@@ -23,3 +23,7 @@
       <div mat-line class="text">No matching categories</div>
     </mat-list-item>
   </mat-list>
+
+  <div class="row justify-content-end add-to-cart" *ngIf="dataService.totalQuantity>0">
+    <button mat-flat-button color="primary" class="view-cart-button" (click)="openCartModal()">Shiko faturen</button>
+  </div>

@@ -10,10 +10,11 @@
       <mat-icon class="material-icons-outlined">light_mode</mat-icon>
     </button>
     <span class="spacer"></span>
-    <span>Category Name</span>
+    <span *ngIf="!showIcons">{{dataService.categoryName.toUpperCase()}}</span>
+    <span *ngIf="showIcons">{{businessName.toUpperCase()}}</span>
     <span class="spacer"></span>
-    <button mat-icon-button *ngIf="!showIcons">
-      <mat-icon matBadge="15" matBadgeColor="warn">shopping_cart</mat-icon>
+    <button mat-icon-button *ngIf="!showIcons" (click)="openCartModal()">
+      <mat-icon matBadge="{{dataService.totalQuantity}}" matBadgeColor="warn">shopping_cart</mat-icon>
     </button>
   </mat-toolbar>
 </p>

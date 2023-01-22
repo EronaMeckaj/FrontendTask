@@ -1,3 +1,11 @@
+.button-row {
+  display: table-cell;
+  max-width: 600px;
+}
+
+.button-row .mat-mdc-button-base {
+  margin: 8px 8px 8px 0;
+}
 .first-letter-icon {
   width: 40px;
   height: 40px;
@@ -34,36 +42,8 @@
   box-shadow: unset;
 }
 
-.remove-button {
-  background-color: #b3261e;
-  margin-right: 4px;
-}
-
-.add-button {
-  background-color: #6750a4;
-  margin-left: 4px;
-}
-
 .mat-mdc-card-title {
   width: 170px;
   word-break: break-all;
   color: var(--on-primary);
-}
-
-.products {
-  background: var(--background);
-  padding-bottom: 10px;
-}
-.view-cart-button {
-  width: 40%;
-  background-color: #8c1d18 !important;
-  border-radius: 100px;
-}
-
-.add-to-cart {
-  margin-right: 5%;
-}
-
-.notification {
-  margin-bottom: 0;
 }

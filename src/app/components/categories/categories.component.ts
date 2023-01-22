@@ -1,8 +1,10 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { CategoriesModel } from 'src/app/models/categories.model';
 import { FilterPipe } from 'src/app/pipes/filter.pipe';
 import { DataService } from 'src/app/services/data.service';
+import { CartComponent } from './products/cart/cart.component';
 
 @Component({
   selector: 'app-categories',
@@ -14,7 +16,7 @@ export class CategoriesComponent implements OnInit {
   searchbar!: ElementRef;
   searchText = '';
   categories: CategoriesModel[] = [];
-  constructor(private dataService: DataService, public filter: FilterPipe, private router: Router,) {
+  constructor(public dataService: DataService, public filter: FilterPipe, private router: Router, private dialogManager: MatDialog,) {
   }
 
   ngOnInit() {
@@ -43,4 +45,15 @@ export class CategoriesComponent implements OnInit {
   goToProducts(id: number) {
     this.router.navigate(['categories', id]);
   }
+
+  openCartModal = () => {
+    this.dialogManager.open(CartComponent, {
+      disableClose: true,
+      data: {
+        totalPrice: this.dataService.totalPrice,
+        totalQuantity: this.dataService.totalQuantity,
+        chosenProducts: this.dataService.chosenProducts
+      },
+    })
+  };
 }
