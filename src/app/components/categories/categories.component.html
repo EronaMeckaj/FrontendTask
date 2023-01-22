@@ -20,7 +20,7 @@
       </div>
     </mat-list-item>
     <mat-list-item *ngIf="(categories | filter: searchText).length === 0">
-      <div mat-line class="text">Nuk ekziston asnje kategori me kete emer.</div>
+      <div mat-line class="text">Nuk ka rezultate.</div>
     </mat-list-item>
   </mat-list>
   <div class="row justify-content-end add-to-cart" *ngIf="dataService.totalQuantity>0">
