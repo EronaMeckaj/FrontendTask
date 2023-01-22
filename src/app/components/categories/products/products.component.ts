@@ -12,7 +12,6 @@ import { CartComponent } from './cart/cart.component';
 })
 export class ProductsComponent implements OnInit {
   categoryId!: string | null;
-  checkShowHideRemoveButton = false;
   constructor(
     private route: ActivatedRoute,
     public dataService: DataService,
@@ -39,9 +38,9 @@ export class ProductsComponent implements OnInit {
 
   addToCart(selectedProduct: Product): void {
     const index = this.dataService.chosenProducts.findIndex((product) => product.name === selectedProduct.name);
-    const indexProductsList = this.dataService.productsList!.findIndex((product) => product.name === selectedProduct.name);
+    const indexNewProductList = this.dataService.newProductList.findIndex((product) => product.name === selectedProduct.name);
     if (index > -1) { //check if product exists in the list
-      this.dataService.productsList[indexProductsList].showButton = true;
+      this.dataService.newProductList[indexNewProductList].showButton = true;
       this.dataService.chosenProducts[index] = {
         name: this.dataService.chosenProducts[index].name,
         unitPrice: this.dataService.chosenProducts[index].unitPrice += selectedProduct.unitPrice,
@@ -49,10 +48,11 @@ export class ProductsComponent implements OnInit {
         backgroundColor: this.dataService.getRandomColor(), // sets the background color for each icon
         showButton: true
       }
-      this.dataService.productsList[indexProductsList].quantity = this.dataService.chosenProducts[index].quantity;
+      this.dataService.newProductList[indexNewProductList].quantity = this.dataService.chosenProducts[index].quantity;;
+
     } else { //if product doesn't exist in the list, we add it to this list
-      this.dataService.productsList[indexProductsList].showButton = true;
-      this.dataService.productsList[indexProductsList].quantity = 1;
+      this.dataService.newProductList[indexNewProductList].showButton = true;
+      this.dataService.newProductList[indexNewProductList].quantity = 1;
       this.dataService.chosenProducts.push({
         name: selectedProduct.name,
         unitPrice: selectedProduct.unitPrice,
@@ -67,10 +67,10 @@ export class ProductsComponent implements OnInit {
 
   removeFromCart(selectedProduct: Product): void {
     const index = this.dataService.chosenProducts.findIndex((product) => product.name === selectedProduct.name);
-    const indexProductsList = this.dataService.productsList!.findIndex((product) => product.name === selectedProduct.name);
+    const indexNewProductList = this.dataService.newProductList.findIndex((product) => product.name === selectedProduct.name);
     if (index > -1) { //check if product exists in the list
       if (this.dataService.chosenProducts[index].quantity > 0) {
-        this.dataService.productsList[indexProductsList].showButton = true;
+        this.dataService.newProductList[indexNewProductList].showButton = true;
         this.dataService.chosenProducts[index] = {
           name: this.dataService.chosenProducts[index].name,
           unitPrice: this.dataService.chosenProducts[index].unitPrice -= selectedProduct.unitPrice,
@@ -78,12 +78,12 @@ export class ProductsComponent implements OnInit {
           backgroundColor: this.dataService.getRandomColor(), // sets the background color for each icon
           showButton: true
         }
-        this.dataService.productsList[indexProductsList].quantity = this.dataService.chosenProducts[index].quantity;
+        this.dataService.newProductList[indexNewProductList].quantity = this.dataService.chosenProducts[index].quantity;
       }
     }
-    if (this.dataService.chosenProducts[index].quantity == 0) {
-      this.dataService.productsList[indexProductsList].quantity = this.dataService.chosenProducts[index].quantity;
-      this.dataService.productsList[indexProductsList].showButton = false;
+    if (this.dataService.chosenProducts[index].quantity == 0) { //check if there is a product on the cart
+      this.dataService.newProductList[indexNewProductList].quantity = this.dataService.chosenProducts[index].quantity;
+      this.dataService.newProductList[indexNewProductList].showButton = false;
     }
     this.getTotalPrice(this.dataService.chosenProducts);
     this.getTotalQuantity(this.dataService.chosenProducts);

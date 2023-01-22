@@ -1,32 +1,41 @@
 <app-toolbar></app-toolbar>
 <div layout="row" class="products" *ngIf="dataService.showView">
-  <div *ngFor="let product of dataService.productsList" layout="row">
-    <mat-card class="product-card">
-      <mat-card-header>
-        <div *ngIf="product.quantity==0" mat-card-avatar class="first-letter-icon"
-          [ngStyle]="{'background-color': product.backgroundColor}">
-          {{dataService.checkLetter(product.name)}}</div>
-        <mat-icon *ngIf="product.quantity>0" matBadge="{{product.quantity}}" matBadgeColor="warn" mat-card-avatar
-          class="notification">
-          <div class="first-letter-icon" [ngStyle]="{'background-color': product.backgroundColor}">
-            {{dataService.checkLetter(product.name)}}</div>
-        </mat-icon>
-        <mat-card-title>{{product.name}}</mat-card-title>
-        <mat-card-subtitle>{{product.unitPrice}} Leke</mat-card-subtitle>
-        <div class="d-flex product-actions">
-          <button mat-mini-fab class="first-letter-icon remove-button" aria-label="Remove from cart"
-            (click)="removeFromCart(product)" *ngIf="product!.showButton">
-            <span>-</span>
-          </button>
-          <button mat-mini-fab class="first-letter-icon add-button" aria-label="Add to card"
-            (click)="addToCart(product)">
-            <span>+</span>
-          </button>
-        </div>
-      </mat-card-header>
-    </mat-card>
-  </div>
+  <carousel [itemsPerSlide]="1" class="produt-carousel" (activeSlideChange)="dataService.activeSlideChange($event)"
+    [interval]="0">
+    <slide *ngFor="let slide of dataService.totalSlides; let index=index">
+      <div *ngFor="let product of dataService.newProductList" layout="row">
+        <mat-card class="product-card">
+          <mat-card-header>
+            <div *ngIf="product.quantity==0" mat-card-avatar class="first-letter-icon"
+              [ngStyle]="{'background-color': product.backgroundColor}">
+              {{dataService.checkLetter(product.name)}}</div>
+            <mat-icon *ngIf="product.quantity>0" matBadge="{{product.quantity}}" matBadgeColor="warn" mat-card-avatar
+              class="notification">
+              <div class="first-letter-icon" [ngStyle]="{'background-color': product.backgroundColor}">
+                {{dataService.checkLetter(product.name)}}</div>
+            </mat-icon>
+            <mat-card-title>{{product.name}}</mat-card-title>
+            <mat-card-subtitle>{{product.unitPrice}} Leke</mat-card-subtitle>
+            <div class="d-flex product-actions">
+              <button mat-mini-fab class="first-letter-icon remove-button" aria-label="Remove from cart"
+                (click)="removeFromCart(product)" *ngIf="product!.showButton">
+                <span>-</span>
+              </button>
+              <button mat-mini-fab class="first-letter-icon add-button" aria-label="Add to card"
+                (click)="addToCart(product)">
+                <span>+</span>
+              </button>
+            </div>
+          </mat-card-header>
+        </mat-card>
+      </div>
+    </slide>
+  </carousel>
   <div class="row justify-content-end add-to-cart" *ngIf="dataService.totalQuantity>0">
     <button mat-flat-button color="primary" class="view-cart-button" (click)="openCartModal()">Shiko faturen</button>
   </div>
+</div>
+
+<div layout="row" class="products" *ngIf="!dataService.showView">
+  <h1 class="text-center">Kjo kategori nuk ka asnje produkt!</h1>
 </div>

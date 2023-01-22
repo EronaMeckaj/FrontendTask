@@ -17,7 +17,9 @@ export class ReceiptDialogComponent {
 
   closeReceiptDialogModal = () => {
     this.dataService.chosenProducts = [];
+    this.dataService.productsList = [];
     this.dataService.totalQuantity = 0;
+    this.dataService.totalPrice = 0;
     this.dialogRef.close();
     this.router.navigate(['categories']);
   };

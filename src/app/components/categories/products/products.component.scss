@@ -61,9 +61,41 @@
 }
 
 .add-to-cart {
+  margin-top: 60px;
   margin-right: 5%;
 }
 
 .notification {
   margin-bottom: 0;
+}
+
+::ng-deep .produt-carousel .carousel-indicators button {
+  background-color: #c7c7c7;
+  border-radius: 50%;
+  height: 11px;
+  width: 11px;
+}
+
+::ng-deep .produt-carousel .carousel-indicators {
+  top: 100%;
+}
+
+::ng-deep .produt-carousel .carousel-control-prev,
+::ng-deep .produt-carousel .carousel-control-next {
+  position: absolute;
+  bottom: -5%;
+  top: 96%;
+  margin-top: 20px;
+}
+
+::ng-deep .produt-carousel .carousel-control-prev-icon {
+  background-image: url("../../../../assets/arrow-left.png");
+  width: 16px;
+  height: 16px;
+}
+
+::ng-deep .produt-carousel .carousel-control-next-icon {
+  background-image: url("../../../../assets/right-arrow.png");
+  width: 16px;
+  height: 16px;
 }

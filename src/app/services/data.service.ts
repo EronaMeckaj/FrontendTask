@@ -12,6 +12,9 @@ export class DataService {
   productsList: Product[] = [];
   categoryName = "";
   showView = false;
+  slidesNumber?: number;
+  totalSlides: any;
+  newProductList: Product[] = [];
   constructor(private http: HttpClient) { }
   /**
    * GET request to take all data from the endpoint as an Observable of type Data.
@@ -52,6 +55,11 @@ export class DataService {
               }
             });
           });
+          this.slidesNumber = Math.ceil(this.productsList.length / 6);
+          this.totalSlides = Array.from({ length: this.slidesNumber }, (_, index) => index + 1);
+          this.activeSlideChange(0);
+        } else {
+          this.showView = false;
         }
       }, error(err) {
         console.log(err);
@@ -85,5 +93,13 @@ export class DataService {
       return name.charAt(0).toUpperCase();
     }
   }
+
+  activeSlideChange(newIndex: number) {
+    if (newIndex >= 0) {
+      let begin = ((newIndex + 1 - 1) * 6);
+      let end = begin + 6;
+      this.newProductList = this.productsList.slice(begin, end)
+    }
+  };
 }
 

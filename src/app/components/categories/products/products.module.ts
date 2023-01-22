@@ -12,7 +12,7 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { FormsModule } from '@angular/forms';
 import { ReceiptDialogComponent } from './cart/receipt-dialog/receipt-dialog.component';
-
+import { CarouselModule } from 'ngx-bootstrap/carousel';
 
 
 @NgModule({
@@ -31,7 +31,8 @@ import { ReceiptDialogComponent } from './cart/receipt-dialog/receipt-dialog.com
     ToolbarModule,
     MatDialogModule,
     MatBadgeModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    CarouselModule.forRoot(),
   ],
   exports: [ProductsComponent]
 })
