@@ -9,6 +9,8 @@ import { ToolbarModule } from 'src/shared/components/toolbar/toolbar.module';
 import { MatDialogModule } from '@angular/material/dialog';
 import { CartComponent } from './cart/cart.component';
 import { MatBadgeModule } from '@angular/material/badge';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -19,13 +21,15 @@ import { MatBadgeModule } from '@angular/material/badge';
   ],
   imports: [
     CommonModule,
+    FormsModule,
     ProductsRoutingModule,
     MatButtonModule,
     MatCardModule,
     MatIconModule,
     ToolbarModule,
     MatDialogModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatCheckboxModule
   ],
   exports: [ProductsComponent]
 })

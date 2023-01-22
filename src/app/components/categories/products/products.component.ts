@@ -26,7 +26,6 @@ export class ProductsComponent implements OnInit {
     })
   }
 
-
   openCartModal = () => {
     this.dialogManager.open(CartComponent, {
       disableClose: true,
@@ -64,7 +63,6 @@ export class ProductsComponent implements OnInit {
     }
     this.getTotalPrice(this.dataService.chosenProducts);
     this.getTotalQuantity(this.dataService.chosenProducts);
-    this.openCartModal();
   }
 
   removeFromCart(selectedProduct: Product): void {
@@ -89,7 +87,6 @@ export class ProductsComponent implements OnInit {
     }
     this.getTotalPrice(this.dataService.chosenProducts);
     this.getTotalQuantity(this.dataService.chosenProducts);
-    this.openCartModal()
   }
 
   getTotalPrice(chosenProducts: Product[]): number {

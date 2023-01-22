@@ -1,34 +1,30 @@
-<div mat-dialog-title>
-  <h5>Fatura</h5>
-</div>
-<mat-dialog-content>
+<mat-icon class="material-icons-outlined time-icon" *ngIf="data.totalQuantity>0">access_time</mat-icon>
+<h1 mat-dialog-title *ngIf="data.totalQuantity>0" class="text-center">
+  Fatura
+</h1>
+<h1 mat-dialog-title *ngIf="data.totalQuantity==0" class="text-center">
+  Ju nuk keni asnje produkt ne shporte!
+</h1>
+<div mat-dialog-content *ngIf="data.totalQuantity>0">
+  <div class="totalPrice text-center"> {{data.totalPrice}} ALL</div>
   <div layout="row" *ngFor="let product of data.chosenProducts">
     <mat-card class="product-card" *ngIf="product.quantity>0">
       <mat-card-header>
         <div mat-card-avatar class="first-letter-icon" [ngStyle]="{'background-color': product.backgroundColor}">
           {{dataService.checkLetter(product.name)}}</div>
-        <mat-card-title>{{product.quantity}}</mat-card-title>
-        <mat-card-subtitle>{{product.unitPrice}} Leke</mat-card-subtitle>
-        <!-- <div class="d-flex product-actions">
-          <button mat-mini-fab class="first-letter-icon remove-button" aria-label="Remove from cart">
-            <span>-</span>
-          </button>
-          <button mat-mini-fab class="first-letter-icon add-button" aria-label="Add to card">
-            <span>+</span>
-          </button>
-        </div> -->
+        <mat-card-title>{{product.name}}</mat-card-title>
+        <div>{{product.quantity}} x {{product.unitPrice}} </div>
+        <mat-checkbox [(ngModel)]="product.showButton">
+        </mat-checkbox>
       </mat-card-header>
     </mat-card>
   </div>
-  <div>
-    Total : {{data.totalPrice}}
-  </div>
-</mat-dialog-content>
+</div>
 <mat-dialog-actions align="end">
   <div class="button-row">
-    <button mat-flat-button (click)="closeCart()">Anulo</button>
+    <button mat-button mat-flat-button (click)="closeCart()" class="cart-buttton-actions close-cart">Anulo</button>
+    <button mat-button mat-flat-button class="cart-buttton-actions send-receipt"
+      *ngIf="data.totalQuantity>0">Paguaj</button>
   </div>
-  <div class="button-row">
-    <button mat-flat-button>Paguaj</button>
-  </div>
+
 </mat-dialog-actions>
