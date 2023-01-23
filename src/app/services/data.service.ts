@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Category, Data, Product } from '../models/data.model';
+import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -15,7 +17,7 @@ export class DataService {
   slidesNumber?: number;
   totalSlides: any;
   newProductList: Product[] = [];
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private breakpointObserver: BreakpointObserver,) { }
   /*
    * GET request to take all data from the endpoint as an Observable of type Data.
    */
@@ -44,7 +46,6 @@ export class DataService {
           }
         })
         if (this.productsList.length > 0) {
-          this.showView = true;
           this.productsList.forEach(product => {
             this.chosenProducts.forEach(chosenProduct => {
               if (product.name == chosenProduct.name) {
@@ -55,9 +56,14 @@ export class DataService {
               }
             });
           });
-          this.slidesNumber = Math.ceil(this.productsList.length / 6);
-          this.totalSlides = Array.from({ length: this.slidesNumber }, (_, index) => index + 1);
           this.activeSlideChange(0);
+          if (this.newProductList.length > 0) {
+            this.slidesNumber = Math.ceil(this.productsList.length / 6);
+            this.totalSlides = Array.from({ length: this.slidesNumber }, (_, index) => index + 1);
+            this.showView = true;
+          } else {
+            this.showView = false
+          }
         } else {
           this.showView = false;
         }
@@ -95,13 +101,64 @@ If it doesn't start with a letter, it replaces special characters and numbers in
   }
 
   /*
-Get the product list for each slide of the carousel. Each card will have 6 slides.
+Get the product list for each slide of the carousel. Each slide will have cards based on different breakpoints.
 */
   activeSlideChange(newIndex: number) {
     if (newIndex >= 0) {
-      let begin = ((newIndex + 1 - 1) * 6);
-      let end = begin + 6;
-      this.newProductList = this.productsList.slice(begin, end)
+      this.breakpointObserver.observe([
+        "(max-width: 350px)"
+      ]).subscribe((result: BreakpointState) => {
+        if (result.matches) {
+          let begin = ((newIndex + 1 - 1) * 5);
+          let end = begin + 5;
+          this.newProductList = this.productsList.slice(begin, end);
+        }
+      });
+      this.breakpointObserver.observe([
+        "(max-width: 600px)"
+      ]).subscribe((result: BreakpointState) => {
+        if (result.matches) {
+          let begin = ((newIndex + 1 - 1) * 6);
+          let end = begin + 6;
+          this.newProductList = this.productsList.slice(begin, end);
+        }
+      });
+      this.breakpointObserver.observe([
+        "(min-width: 600px)"
+      ]).subscribe((result: BreakpointState) => {
+        if (result.matches) {
+          let begin = ((newIndex + 1 - 1) * 6);
+          let end = begin + 6;
+          this.newProductList = this.productsList.slice(begin, end);
+        }
+      });
+      this.breakpointObserver.observe([
+        "(min-width: 768px)"
+      ]).subscribe((result: BreakpointState) => {
+        if (result.matches) {
+          let begin = ((newIndex + 1 - 1) * 6);
+          let end = begin + 6;
+          this.newProductList = this.productsList.slice(begin, end);
+        }
+      });
+      this.breakpointObserver.observe([
+        "(min-width: 992px)"
+      ]).subscribe((result: BreakpointState) => {
+        if (result.matches) {
+          let begin = ((newIndex + 1 - 1) * 6);
+          let end = begin + 6;
+          this.newProductList = this.productsList.slice(begin, end);
+        }
+      });
+      this.breakpointObserver.observe([
+        "(min-width: 1200px)"
+      ]).subscribe((result: BreakpointState) => {
+        if (result.matches) {
+          let begin = ((newIndex + 1 - 1) * 6);
+          let end = begin + 6;
+          this.newProductList = this.productsList.slice(begin, end);
+        }
+      });
     }
   };
 }

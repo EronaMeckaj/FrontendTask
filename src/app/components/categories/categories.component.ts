@@ -46,6 +46,7 @@ export class CategoriesComponent implements OnInit {
   }
 
   goToProducts(id: number) {
+    this.dataService.productsList = [];
     this.router.navigate(['categories', id]);
   }
 
